@@ -40,6 +40,7 @@ docker-compose.override.yml
 # Add your specific key files
 gen-lang-client-0431862828-44d56cb2ee6f.json
 firebase-key.json
+gcp-key.json
 *.json # Use this if you're not sure, but be careful
 
 # Local database files

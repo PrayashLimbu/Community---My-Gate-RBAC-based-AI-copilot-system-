@@ -9,13 +9,7 @@ importScripts('https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js')
 
 // 2. Your config (make sure storageBucket is 'appspot.com')
 const firebaseConfig = {
-  apiKey: "AIzaSyCU_bzDwyh1r_e8d44srgF-1aWk8xD0pwQ",
-  authDomain: "gen-lang-client-0431862828.firebaseapp.com",
-  projectId: "gen-lang-client-0431862828",
-  storageBucket: "gen-lang-client-0431862828.firebasestorage.app.com",
-  messagingSenderId: "184469188139",
-  appId: "1:184469188139:web:d00c1269141bb8ffe9046e",
-  measurementId: "G-Q7S1HQB379"
+x
 };
 
 // 3. Initialize with v8 syntax
