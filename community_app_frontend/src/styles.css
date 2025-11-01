@@ -1,0 +1,170 @@
+/* src/styles.css */
+
+/* Define theme variables */
+:root {
+  /* Light Theme (Default) */
+  --bg-color: #f4f7f6;
+  --text-color: #333;
+  --card-bg: #ffffff;
+  --header-bg: #ffffff;
+  --header-text: #005a8d;
+  --border-color: #dee2e6;
+  --input-bg: #f0f2f5;
+  --button-bg: #007bff;
+  --button-text: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Dark Theme */
+body.dark { /* Apply when body has 'dark' class */
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --card-bg: #1e1e1e;
+  --header-bg: #1e1e1e;
+  --header-text: #58a6ff; /* Lighter blue for dark */
+  --border-color: #333333;
+  --input-bg: #2c2c2c;
+  --button-bg: #2386fd;
+  --button-text: #ffffff;
+  --shadow-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Apply variables */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-header {
+  background-color: var(--header-bg);
+  padding: 15px 30px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 4px var(--shadow-color);
+  position: relative; /* For positioning buttons */
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.app-header h1 {
+  color: var(--header-text);
+  margin: 0;
+  font-size: 1.8em;
+  font-weight: 600;
+}
+
+.logout-button {
+    position: absolute;
+    top: 50%;
+    right: 30px; /* Position on the far right */
+    transform: translateY(-50%);
+    padding: 8px 12px;
+    font-size: 0.9em;
+    background-color: #dc3545; /* Red logout */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.logout-button:hover {
+    background-color: #c82333;
+}
+
+.theme-toggle-button {
+  position: absolute;
+  top: 50%;
+  right: 110px; /* Position next to logout button */
+  transform: translateY(-50%);
+  padding: 5px;
+  font-size: 1.2em;
+  right: 130px; /* Adjust position */
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: 1px solid var(--border-color);
+  width: 40px; /* Make it squarish */
+  min-width: 40px;
+  padding: 5px;
+  font-size: 1.2em;
+}
+ .theme-toggle-button:hover {
+    opacity: 0.8;
+ }
+
+.app-main-content { 
+  flex-grow: 1;
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px; /* Max content width */
+  margin: 0 auto; /* Center content area */
+  box-sizing: border-box; /* Include padding in width */
+  align-items: center; /* <-- ADD THIS LINE to center the chat box */
+}
+
+/* Update base element styles to use variables */
+h2, h3 { color: var(--header-text); margin-bottom: 0.8em; }
+
+button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+  padding: 10px 15px;
+  font-size: 1em;
+  transition: background-color 0.2s ease;
+}
+button:hover { opacity: 0.85; }
+button:disabled { background-color: #ccc; cursor: not-allowed; }
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: calc(100% - 22px);
+  max-width: 350px;
+  display: block;
+  font-size: 1em;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+input:focus { outline: 2px solid var(--button-bg); }
+input:disabled { background-color: #eee; } /* Adjust disabled style if needed for dark */
+
+label { display: block; margin-bottom: 5px; font-weight: bold; }
+
+form {
+  background-color: var(--card-bg);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  max-width: 400px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.error-message { color: #d9534f; font-size: 0.9em; margin-top: -5px; margin-bottom: 10px; }
+
+/* General card styling using variables */
+.card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}

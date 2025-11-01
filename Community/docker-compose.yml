@@ -1,0 +1,42 @@
+# docker-compose.yml
+services:
+  db:
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=community_db
+      - POSTGRES_USER=community_user
+      - POSTGRES_PASSWORD=securepassword # Use a strong password in production
+    ports:
+      - "5432:5432" # Expose DB port only if needed externally
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app # Mount your project code
+      # Mount your specific GCP key file (read-only)
+      - ./gen-lang-client-0431862828-44d56cb2ee6f.json:/app/gcp-key.json:ro
+      - ./firebase-key.json:/app/firebase-key.json:ro 
+    ports:
+      - "8000:8000" # Map container port 8000 to host port 8000
+    depends_on:
+      - db # Wait for the db service to be ready
+    environment:
+      # --- Database Connection ---
+      - POSTGRES_DB=community_db
+      - POSTGRES_USER=community_user
+      - POSTGRES_PASSWORD=securepassword # Match the DB service password
+      - POSTGRES_HOST=db # Service name of the database container
+
+      # --- GCP Authentication ---
+      # Tells the Google Cloud library where to find the credentials INSIDE the container
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/gcp-key.json
+
+      # --- Django Settings ---
+      - PYTHONDONTWRITEBYTECODE=1 # Prevents Python from writing .pyc files
+      - PYTHONUNBUFFERED=1 # Ensures Python output (like print statements) appears immediately
+
+volumes:
+  postgres_data: # Persists database data even if the container stops/restarts

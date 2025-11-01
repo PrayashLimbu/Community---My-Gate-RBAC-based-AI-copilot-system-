@@ -1,0 +1,13 @@
+# requirements.txt
+django
+djangorestframework
+psycopg2-binary
+djangorestframework-simplejwt
+openai
+lark
+google-cloud-aiplatform
+vertexai
+firebase-admin # (If you added this)
+django-cors-headers
+firebase-admin
+# Add other libraries like 'pyfcm' for notifications later

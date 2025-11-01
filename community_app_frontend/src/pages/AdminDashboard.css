@@ -1,0 +1,165 @@
+/* src/pages/AdminDashboard.css */
+
+.admin-dashboard h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* --- Admin Tab Styles --- */
+.admin-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: -1px; /* Overlap the card border */
+  z-index: 1;
+  position: relative;
+}
+
+.admin-tabs .tab-button {
+  padding: 12px 20px;
+  font-size: 1em;
+  font-weight: 600;
+  color: var(--text-color);
+  background-color: var(--input-bg); /* Inactive tab bg */
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  margin-right: 5px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.admin-tabs .tab-button:hover {
+  opacity: 1;
+  background-color: var(--card-bg);
+}
+
+.admin-tabs .tab-button.active {
+  background-color: var(--card-bg); /* Active tab bg matches card */
+  border-bottom: 1px solid var(--card-bg); /* Hide bottom border */
+  opacity: 1;
+  transform: translateY(1px); /* Connects to card */
+}
+
+/* --- Tab Content Card --- */
+.admin-tab-content.card {
+  border-radius: 0 8px 8px 8px; /* Adjust radius for tabs */
+  padding: 25px;
+  /* Ensure it spans full width */
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* --- Re-use GuardDashboard *within* the tab --- */
+/* This removes the extra padding/margins from the nested GuardDashboard */
+.admin-tab-content .guard-dashboard {
+  margin: -25px; /* Neutralize card padding */
+  padding: 0;
+}
+.admin-tab-content .guard-dashboard .card {
+  box-shadow: none; /* Remove nested shadows */
+  border-radius: 0;
+  margin: 0;
+  padding: 20px;
+}
+.admin-tab-content .guard-dashboard .calendar-container.card {
+  border-bottom: 1px solid var(--border-color);
+}
+.admin-tab-content .guard-dashboard .tabs {
+  padding: 20px; /* Add padding back to nested tabs */
+}
+
+
+/* --- User Management & Audit Log Styles --- */
+.user-management-container h3,
+.audit-log-container h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+/* Generic table styles for Admin */
+.user-management-container table,
+.audit-log-container table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 5px;
+}
+
+.user-management-container th,
+.user-management-container td,
+.audit-log-container th,
+.audit-log-container td {
+  padding: 12px 15px;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--border-color);
+  text-align: left;
+}
+
+.user-management-container th,
+.audit-log-container th {
+  background-color: transparent;
+  font-weight: 600;
+  color: #6c757d; /* Grey header text */
+  font-size: 0.85em;
+  text-transform: uppercase;
+  border-bottom-width: 2px;
+}
+
+.user-management-container tbody tr:hover,
+.audit-log-container tbody tr:hover {
+  background-color: var(--input-bg);
+}
+
+/* User Role Badges */
+.user-role-badge {
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 0.85em;
+  font-weight: 500;
+  text-transform: capitalize;
+  border: 1px solid;
+}
+.role-admin { background-color: #f8d7da; color: #842029; border-color: #f5c2c7; }
+.role-guard { background-color: #fff3cd; color: #856404; border-color: #ffeeba; }
+.role-resident { background-color: #d1e7dd; color: #0f5132; border-color: #badbcc; }
+
+/* Edit Button */
+.action-button.edit-btn {
+  background-color: #0d6efd; /* Blue */
+  color: white;
+  padding: 8px 18px;
+  font-size: 0.9em;
+  border-radius: 20px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.action-button.edit-btn:hover {
+  background-color: #0a58ca;
+}
+
+
+/* Audit Log Badges (copied from GuardDashboard) */
+.event-badge {
+  padding: 4px 10px; border-radius: 15px; font-size: 0.85em;
+  font-weight: 500; text-transform: capitalize; border: 1px solid;
+}
+.event-visitor_created { background-color: #cfe2ff; color: #0a58ca; border-color: #b6d4fe; }
+.event-visitor_approved { background-color: #d1e7dd; color: #0f5132; border-color: #badbcc; }
+.event-visitor_denied { background-color: #f8d7da; color: #842029; border-color: #f5c2c7; }
+.event-visitor_checkin { background-color: #e0f2f7; color: #0d6efd; border-color: #b6d4fe; }
+.event-visitor_checkout { background-color: #e2e3e5; color: #575c61; border-color: #d3d6d8; }
+.event-role_change { background-color: #fff3cd; color: #856404; border-color: #ffeeba; }
+
+.audit-log-container td pre {
+  margin: 0; padding: 5px; background-color: var(--input-bg);
+  border-radius: 4px; font-size: 0.85em; white-space: pre-wrap;
+  word-break: break-all; color: var(--text-color);
+}

@@ -1,0 +1,290 @@
+/* src/pages/GuardDashboard.css */
+
+/* Use global card style defined in styles.css */
+.guard-dashboard .card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+/* Calendar Area */
+.calendar-container {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+/* The calendar component itself */
+.react-calendar {
+  width: 100%;
+  /* REMOVED max-width: 400px to let it fill the card */
+  max-width: 550px; /* Set a new, larger max-width */
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-family: inherit;
+  line-height: 1.5; /* Increased line height */
+}
+
+/* Navigation header (Month, Year) */
+.react-calendar__navigation {
+  display: flex;
+  height: 50px; /* Increased height */
+  margin-bottom: 0.5em;
+}
+.react-calendar__navigation button {
+  min-width: 50px; /* Increased size */
+  background: none;
+  border: none;
+  color: var(--button-bg);
+  font-size: 1.3em; /* Increased font size */
+  font-weight: bold;
+  cursor: pointer;
+}
+.react-calendar__navigation button:hover {
+  background-color: var(--input-bg);
+}
+.react-calendar__navigation__label {
+  font-size: 1.2em; /* Increased font size */
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* Weekday abbreviations (Mo, Tu, We) */
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  font-weight: 600; /* Bolder */
+  font-size: 0.9em; /* Increased font size */
+  color: #6c757d;
+  text-transform: uppercase;
+  padding-bottom: 5px; /* Added spacing */
+}
+
+/* Day tiles */
+.react-calendar__tile {
+  max-width: 100%;
+  padding: 14px 8px; /* Increased padding */
+  background: none;
+  border: none;
+  border-radius: 6px; /* Slightly more rounded */
+  cursor: pointer;
+  font-size: 1em; /* Increased font size */
+  color: var(--text-color);
+}
+
+/* Neighboring month days (greyed out) */
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #999;
+  opacity: 0.6;
+}
+
+/* Today's date */
+.react-calendar__tile--now {
+  background: var(--input-bg);
+  font-weight: bold;
+}
+.react-calendar__tile--now:hover {
+  background: #e0e0e0;
+}
+body.dark .react-calendar__tile--now {
+  background: #3a3b3c;
+}
+body.dark .react-calendar__tile--now:hover {
+  background: #4a4b4c;
+}
+
+/* Selected date */
+.react-calendar__tile--active {
+  background: var(--button-bg) !important;
+  color: var(--button-text) !important;
+  font-weight: bold;
+}
+.react-calendar__tile--active:hover {
+   background: var(--button-bg);
+   opacity: 0.8;
+}
+
+/* Tabs Styling */
+.guard-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.tab-button {
+    padding: 10px 25px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Tab Colors (Inactive) - Based on image */
+.tab-button.expected { background-color: #ddf2ea; color: #348e6a; }
+.tab-button.pending { background-color: #fff3cd; color: #b58900; }
+.tab-button.inside { background-color: #deefff; color: #0d6efd; }
+
+/* Active Tab Styles */
+.tab-button.active {
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.tab-button.expected.active { background-color: #348e6a; }
+.tab-button.pending.active { background-color: #ffc107; color: #333; }
+.tab-button.inside.active { background-color: #0d6efd; }
+
+
+/* Visitor List Card */
+.visitor-list-container {
+    border: none;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.visitor-list-container h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.visitor-list-container table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    margin-top: 0;
+}
+
+.visitor-list-container th,
+.visitor-list-container td {
+    padding: 15px;
+    vertical-align: middle;
+    border: none;
+    text-align: left;
+}
+
+.visitor-list-container tr {
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+.visitor-list-container tbody tr:nth-child(even) {
+     background-color: var(--input-bg);
+}
+.visitor-list-container tbody tr:hover {
+    background-color: var(--border-color);
+}
+body.dark .visitor-list-container tbody tr:hover {
+     background-color: #3a3b3c;
+}
+
+
+.visitor-list-container thead th {
+    background-color: transparent;
+    font-weight: 600;
+    color: #6c757d;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+/* Column-specific alignments */
+.visitor-list-container th:nth-child(3),
+.visitor-list-container td:nth-child(3) { text-align: center; } /* Status */
+.visitor-list-container th:nth-child(4),
+.visitor-list-container td:nth-child(4) { text-align: center; } /* Action */
+
+
+/* Visitor Name/Flat styling */
+.visitor-name {
+    font-weight: 600;
+    font-size: 1.05em;
+    color: var(--text-color);
+}
+.visitor-flat {
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+/* Status Text (from image) */
+.status-text {
+    font-weight: 600;
+    font-size: 0.95em;
+}
+.status-pending { color: #ffc107; }
+.status-approved { color: #198754; }
+.status-checked_in { color: #198754; }
+.status-checked_out { color: #dc3545; }
+.status-denied { color: #6c757d; }
+
+
+/* Action Buttons (from image) */
+.action-button {
+    padding: 8px 18px;
+    font-size: 0.9em;
+    border-radius: 20px;
+    font-weight: 600;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.action-button:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+.action-button.checkin-btn { background-color: #198754; } /* Green */
+.action-button.checkout-btn { background-color: #dc3545; } /* Red */
+
+/* Action Text (for non-actionable items) */
+.action-text {
+    font-size: 0.95em;
+    color: #6c757d;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding: 8px 18px;
+}
+.tab-button.log { 
+  background-color: #e2e3e5; /* Grey */
+  color: #343a40; 
+}
+
+/* Active Tab Styles */
+.tab-button.log.active { 
+  background-color: #6c757d; /* Dark Grey */
+  color: white; 
+}
+
+/* --- Adjust Table Columns for Log --- */
+/* Center all columns except the first one in the log */
+.visitor-list-container th:nth-child(n+2),
+.visitor-list-container td:nth-child(n+2) {
+    text-align: center;
+}
+
+/* Re-align first column to left */
+.visitor-list-container th:first-child,
+.visitor-list-container td:first-child {
+    text-align: left;
+}
